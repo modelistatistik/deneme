@@ -1,0 +1,105 @@
+# Descriptive Statistics
+
+
+
+```{r report data, eval=FALSE, include=FALSE}
+report::report(mydata)
+```
+
+
+
+```{r arsenal Table 1, results='asis', eval=FALSE, include=FALSE}
+# cat(names(mydata), sep = " + \n")
+
+library(arsenal)
+tab1 <- tableby(~ Cinsiyet + 
+Yas + 
+TumorYerlesimi + 
+TumorCapi + 
+HistolojikAltTip + 
+Lauren + 
+Grade + 
+TNM + 
+Tstage + 
+T_stage + 
+Nstage + 
+N_stage + 
+Mstage + 
+M_stage + 
+CD44 + 
+Her2 + 
+MMR + 
+MMR2 + 
+TumorPDL1gr1 + 
+TumorPDL1gr5 + 
+inflPDL1gr1 + 
+inflPDL1gr5 + 
+LVI + 
+PNI + 
+LenfNoduMetastazi + 
+Outcome
+                ,
+                data = mydata)
+summary(tab1)
+```
+
+
+
+
+## Categorical Variables
+
+```{r, eval=FALSE, include=FALSE}
+mydataCategorical <- mydata %>% 
+    select(-Yas,
+           -TumorCapi,
+           -CerrahiTarih,
+           -genel_sagkalim,
+           -SonTarih,
+           -TNM
+    )
+```
+
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+source(here::here("R", "generatingCodeForDescriptiveStatistics.R"))
+```
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeDescriptives.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+\pagebreak
+
+
+## Continious Variables
+
+
+```{r eval=FALSE, include=FALSE}
+questionr:::icut()
+```
+
+
+
+```{r, eval=FALSE, include=FALSE}
+mydataContinious <- mydata %>% 
+    select(
+        Yas,
+        TumorCapi
+    )
+```
+
+
+
+```{r include=FALSE, eval=FALSE, include=FALSE}
+source(here::here("R", "generatingCodeForContinious.R"))
+```
+
+
+
+```{r generatedCode, child = here::here('childRmd', 'generatedCodeContinious.Rmd'), eval=FALSE, include=FALSE}
+```
+
+
+
